@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>612438877443-qqluokv81bq3c05nctvktkaher10k164.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.612438877443-qqluokv81bq3c05nctvktkaher10k164</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBRrPOxi2hA-lnCb53MVJ_abArA1vWlAWs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>612438877443</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.MichelleLau.RateMyJoke</string>
+	<key>PROJECT_ID</key>
+	<string>ratemyjoke</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ratemyjoke.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:612438877443:ios:892d9600e63c2e71ceb536</string>
+	<key>DATABASE_URL</key>
+	<string>https://ratemyjoke.firebaseio.com</string>
+</dict>
+</plist>
