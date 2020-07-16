@@ -7,19 +7,27 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class HomeViewController: UITableViewController {
+    
+    var jokes = [Joke]()
+    let db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "HomeViewController"
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.title = "Jokes"
+        self.tableView.tableFooterView = UIView()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
+    }
+    
+    @objc func logoutUser() {
+        if Auth.auth().currentUser != nil {
+            try? Auth.auth().signOut()
+        }
+        self.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Table view data source

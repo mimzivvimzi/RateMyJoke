@@ -17,6 +17,7 @@
 		692DDC6524B1A96000A081CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 692DDC6424B1A96000A081CD /* GoogleService-Info.plist */; };
 		69351A0D24BBFF6D00779248 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69351A0C24BBFF6D00779248 /* UIViewController+Alert.swift */; };
 		69351A1124BC005200779248 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69351A1024BC005200779248 /* HomeViewController.swift */; };
+		6964C24424C05F4400298F7B /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964C24324C05F4400298F7B /* Joke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		692DDC6424B1A96000A081CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69351A0C24BBFF6D00779248 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		69351A1024BC005200779248 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6964C24324C05F4400298F7B /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		A54A234BA74341FAF4C3D69F /* Pods_RateMyJoke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMyJoke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,9 +72,9 @@
 			isa = PBXGroup;
 			children = (
 				692DDC5024B1A84300A081CD /* AppDelegate.swift */,
-				692DDC5424B1A84300A081CD /* SignInViewController.swift */,
-				69351A1024BC005200779248 /* HomeViewController.swift */,
-				692DDC5624B1A84300A081CD /* Main.storyboard */,
+				6964C24224C05F1300298F7B /* Model */,
+				6964C24124C05EE500298F7B /* View */,
+				6964C24024C05EDA00298F7B /* Controllers */,
 				692DDC5924B1A84700A081CD /* Assets.xcassets */,
 				692DDC6424B1A96000A081CD /* GoogleService-Info.plist */,
 				692DDC5224B1A84300A081CD /* SceneDelegate.swift */,
@@ -89,6 +91,31 @@
 			children = (
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6964C24024C05EDA00298F7B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				692DDC5424B1A84300A081CD /* SignInViewController.swift */,
+				69351A1024BC005200779248 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6964C24124C05EE500298F7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				692DDC5624B1A84300A081CD /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6964C24224C05F1300298F7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6964C24324C05F4400298F7B /* Joke.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C3592F84E664B92DF6951347 /* Pods */ = {
@@ -226,6 +253,7 @@
 			files = (
 				69351A1124BC005200779248 /* HomeViewController.swift in Sources */,
 				692DDC5524B1A84300A081CD /* SignInViewController.swift in Sources */,
+				6964C24424C05F4400298F7B /* Joke.swift in Sources */,
 				692DDC5124B1A84300A081CD /* AppDelegate.swift in Sources */,
 				692DDC5324B1A84300A081CD /* SceneDelegate.swift in Sources */,
 				69351A0D24BBFF6D00779248 /* UIViewController+Alert.swift in Sources */,
