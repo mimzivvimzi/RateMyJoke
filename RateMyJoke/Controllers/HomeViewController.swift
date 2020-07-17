@@ -10,10 +10,13 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
+let FIREBASE_COLLECTION_NAME = "Jokes"
+
 class HomeViewController: UITableViewController {
     
     var jokes = [Joke]()
     let db = Firestore.firestore()
+    let plus = UIImage(systemName: "plus")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,30 @@ class HomeViewController: UITableViewController {
         self.title = "Jokes"
         self.tableView.tableFooterView = UIView()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: plus, style: .done, target: self, action: #selector(addJoke))
+    }
+    
+    @objc func addJoke() {
+        let alert = UIAlertController(title: "Add your joke below", message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        let addJoke = UIAlertAction(title: "Add", style: .default) { (action) in
+            let jokeString = alert.textFields?[0].text ?? ""
+            if jokeString.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
+                self.db.collection(FIREBASE_COLLECTION_NAME).addDocument(data: ["description": jokeString, "likes" : 0, "dislikes": 0]) { (error) in
+                    guard error == nil else {
+                        self.showAlert(title: "Error", message: error?.localizedDescription ?? "An error occurred")
+                        return
+                    }
+                    print("Check Firebase")
+                }
+            }
+        }
+        alert.addAction(addJoke)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter your joke here!"
+        }
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func logoutUser() {

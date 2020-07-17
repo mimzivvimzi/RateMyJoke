@@ -24,7 +24,6 @@ class SignInViewController: UIViewController {
         if Auth.auth().currentUser != nil {
             try? Auth.auth().signOut()
         }
-        
         switchUIView()
     }
     
