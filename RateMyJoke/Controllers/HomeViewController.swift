@@ -71,7 +71,7 @@ class HomeViewController: UITableViewController {
             print("response is \(String(describing: response))")
             if let response = response {
                 for document in response.documents {
-                    let newJoke = Joke(description: document.data()["description"] as? String ?? "", likes: document.data()["likes"] as? Int ?? 0, dislikes: document.data()["dislikes"] as? Int ?? 0)
+                    let newJoke = Joke(description: document.data()["description"] as? String ?? "", likes: document.data()["likes"] as? Int ?? 0, dislikes: document.data()["dislikes"] as? Int ?? 0, id: document.documentID)
                     self.jokes.append(newJoke)
 
 //                    print(document.data()["description"])
@@ -106,5 +106,41 @@ class HomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+extension HomeViewController {
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let likeAction = UIContextualAction(style: .normal, title: "Like") { (action, view, onSuccess) in
+            let joke = self.jokes[indexPath.row]
+            let likes = (joke.likes ?? 0) + 1
+            self.db.collection(FIREBASE_COLLECTION_NAME).document(joke.id).updateData(["likes": likes]) { (error) in
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                } else {
+                    self.fetchJokes()
+                }
+            }
+            onSuccess(true)
+        }
+        likeAction.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [likeAction])
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let dislikeAction = UIContextualAction(style: .normal, title: "Dislike") { (action, view, onSuccess) in
+            let joke = self.jokes[indexPath.row]
+            let dislikes = (joke.dislikes ?? 0) + 1
+            self.db.collection(FIREBASE_COLLECTION_NAME).document(joke.id).updateData(["dislikes": dislikes]) { (error) in
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                } else {
+                    self.fetchJokes()
+                }
+            }
+            onSuccess(true)
+        }
+        dislikeAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [dislikeAction])
     }
 }
