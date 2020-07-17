@@ -9,15 +9,27 @@
 import UIKit
 
 class Joke {
-    var id: String
+//    var id: String
     var jokeDescription: String?
     var likes: Int?
     var dislikes: Int?
     
-    init(dictionary: [String: Any], id: String) {
-        self.jokeDescription = dictionary["jokeDescription"] as? String
-        self.likes = dictionary["likes"] as? Int
-        self.dislikes = dictionary["dislikes"] as? Int
-        self.id = id
+    init(json: [String: Any]) {
+        jokeDescription = json["description"] as? String ?? ""
+        likes = json["likes"] as? Int ?? 0
+        dislikes = json["dislikes"] as? Int ?? 0
     }
+    
+    init(description: String, likes: Int, dislikes: Int) {
+        jokeDescription = description
+        self.likes = likes
+        self.dislikes = dislikes
+    }
+    
+//    init(dictionary: [String: Any], id: String) {
+//        self.jokeDescription = dictionary["jokeDescription"] as? String
+//        self.likes = dictionary["likes"] as? Int
+//        self.dislikes = dictionary["dislikes"] as? Int
+//        self.id = id
+//    }
 }
