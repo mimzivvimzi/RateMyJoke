@@ -26,7 +26,10 @@ class HomeViewController: UITableViewController {
         self.title = "Jokes"
         self.tableView.tableFooterView = UIView()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: plus, style: .done, target: self, action: #selector(addJoke))
+        let add = UIBarButtonItem(image: plus, style: .done, target: self, action: #selector(addJoke))
+        let credits = UIBarButtonItem(title: "Credits", style: .done, target: self, action: #selector(goToCredits))
+        navigationItem.rightBarButtonItems = [add, credits]
+
         fetchJokes()
     }
     
@@ -59,6 +62,12 @@ class HomeViewController: UITableViewController {
             try? Auth.auth().signOut()
         }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func goToCredits() {
+        let creditsViewController = CreditsViewController()
+        self.navigationController?.present(creditsViewController, animated: true, completion: nil)
+//        pushViewController(creditsViewController, animated: true)
     }
     
     func fetchJokes() {
