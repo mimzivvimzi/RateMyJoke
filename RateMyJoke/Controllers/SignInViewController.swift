@@ -25,6 +25,15 @@ class SignInViewController: UIViewController {
             try? Auth.auth().signOut()
         }
         switchUIView()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        emailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
+        verifyPasswordTextField.endEditing(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
