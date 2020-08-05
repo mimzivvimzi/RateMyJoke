@@ -60,6 +60,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInPressed(_ sender: UIButton) {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        
         // IF THE USER IS SIGNING IN
         if isSignInView {
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
@@ -90,29 +91,7 @@ class SignInViewController: UIViewController {
             }
         }
     }
-//        if isSignInView {
-//            Auth.auth().signIn(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "") { (authResult, error) in
-//                if authResult != nil {
-//                    self.goToHomeScreen()
-//                } else {
-//                    self.showAlert(title: "Sign-in Failed", message: error?.localizedDescription ?? "")
-//                }
-//            }
-//        } else {  // IF THE USER IS SIGNING UP
-//            if passwordTextField.text == verifyPasswordTextField.text {
-//                Auth.auth().createUser(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "") { (authResult, error) in
-//                    if authResult != nil {
-//                        self.goToHomeScreen()
-//                    } else {
-//                        self.showAlert(title: "Sign-up Failed", message: error?.localizedDescription ?? "")
-//                    }
-//                }
-//            } else {
-//                showAlert(title: "Password does not match", message: "Password and verify password field must match")
-//            }
-//        }
-//    }
-    
+
     func goToHomeScreen() {
         self.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
